@@ -53,6 +53,13 @@ namespace CalculatorTest
 			Assert.AreEqual(res, 15);
 		}
 
+		[TestMethod]
+		public void MultipleValuesWithNewlineDelimiterPass()
+		{
+			var res = Calculator.Add("1\r2,3\n4" + Environment.NewLine + "5");
+			Assert.IsNotNull(res);
+			Assert.AreEqual(res, 15);
+		}
 
 	}
 }

@@ -16,9 +16,9 @@ namespace StringCalculator
 			}
 
 			int sum = 0;
-			string[] arrSplitByComma = input.Split(',');
+			string[] arrSplitByDelimiter = input.Split(new string[] { ",", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-			foreach (var item in arrSplitByComma)
+			foreach (var item in arrSplitByDelimiter)
 			{
 				int valToAdd = 0;
 				int.TryParse(item, out valToAdd);
