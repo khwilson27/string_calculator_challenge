@@ -17,7 +17,19 @@ namespace StringCalculator
 
 			int sum = 0;
 			var negativeNumbers = new List<int>();
-			string[] arrSplitByDelimiter = input.Split(new string[] { ",", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries); // split string with comma/newline as delimiters
+			var delimiters = new List<string>() { ",", "\r", "\n" };
+
+			if (input.Length > 5) // check for proper length, then try to parse custom delimiter
+			{
+				if (input.Substring(0, 2) == "//" && input.Substring(3, 2) == "\\n")
+				{
+					string newDelimiter = input.Substring(2, 1);
+					input = input.Substring(5);
+					delimiters.Add(newDelimiter);
+				}
+			}
+
+			string[] arrSplitByDelimiter = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries); // split string with comma/newline as delimiters
 
 			foreach (var item in arrSplitByDelimiter)
 			{

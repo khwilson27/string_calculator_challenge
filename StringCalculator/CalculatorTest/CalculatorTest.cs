@@ -83,5 +83,13 @@ namespace CalculatorTest
 			Assert.AreEqual(res, 1006);
 		}
 
+		[TestMethod]
+		public void CustomDelimiterPass()
+		{
+			var res = Calculator.Add("//;\\n2;5");
+			Assert.IsNotNull(res);
+			Assert.AreEqual(res, 7);
+		}
+
 	}
 }
