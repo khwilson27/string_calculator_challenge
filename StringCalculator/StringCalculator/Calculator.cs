@@ -19,13 +19,16 @@ namespace StringCalculator
 			var negativeNumbers = new List<int>();
 			var delimiters = new List<string>() { ",", "\r", "\n" };
 
-			if (input.Length > 5) // check for proper length, then try to parse custom delimiter
+			if (input.Length > 5) // check for min length of custom delimiter, then try to parse custom delimiter
 			{
-				if (input.Substring(0, 2) == "//" && input.Substring(3, 2) == "\\n")
+				if (input.Substring(0, 2) == "//" && input.Contains("\\n"))
 				{
-					string newDelimiter = input.Substring(2, 1);
-					input = input.Substring(5);
+					int indexOfEnder = input.IndexOf("\\n");
+					string newDelimiter = input.Substring(2, indexOfEnder - 2);
+					newDelimiter = newDelimiter.Replace("[", "").Replace("]", "");
 					delimiters.Add(newDelimiter);
+
+					input = input.Substring(indexOfEnder + 2);
 				}
 			}
 

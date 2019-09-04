@@ -84,12 +84,19 @@ namespace CalculatorTest
 		}
 
 		[TestMethod]
-		public void CustomDelimiterPass()
+		public void CustomSingleCharDelimiterPass()
 		{
 			var res = Calculator.Add("//;\\n2;5");
 			Assert.IsNotNull(res);
 			Assert.AreEqual(res, 7);
 		}
 
+		[TestMethod]
+		public void CustomMultiCharDelimiterPass()
+		{
+			var res = Calculator.Add("//[***]\\n2***5");
+			Assert.IsNotNull(res);
+			Assert.AreEqual(res, 7);
+		}
 	}
 }
