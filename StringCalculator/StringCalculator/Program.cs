@@ -10,12 +10,12 @@ namespace StringCalculator
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Please enter a comma-delimited string! I will return the sum!");
+			Console.WriteLine("Please enter a comma-delimited/newline-delimited string! I will return the sum of the integers!");
 
 			string input = Console.ReadLine();
 			try
 			{
-				Console.WriteLine($"The sum is {Calculator.Add(input)}!");
+				Console.WriteLine($"The sum of the valid integers is {Calculator.Add(input)}!");
 			}
 			catch(Exception ex)
 			{

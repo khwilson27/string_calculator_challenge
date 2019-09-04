@@ -16,13 +16,25 @@ namespace StringCalculator
 			}
 
 			int sum = 0;
-			string[] arrSplitByDelimiter = input.Split(new string[] { ",", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+			var negativeNumbers = new List<int>();
+			string[] arrSplitByDelimiter = input.Split(new string[] { ",", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries); // split string with comma/newline as delimiters
 
 			foreach (var item in arrSplitByDelimiter)
 			{
 				int valToAdd = 0;
 				int.TryParse(item, out valToAdd);
+
+				if (valToAdd < 0) // build list of negative numbers to later return in Exception
+				{
+					negativeNumbers.Add(valToAdd);
+				}
+
 				sum += valToAdd;
+			}
+
+			if (negativeNumbers.Count > 0)
+			{
+				throw new Exception("Negative values not supported! Offending inputs: " + String.Join(", ", negativeNumbers));
 			}
 
 			return sum;

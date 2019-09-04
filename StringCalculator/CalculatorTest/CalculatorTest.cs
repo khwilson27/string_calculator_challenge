@@ -61,5 +61,19 @@ namespace CalculatorTest
 			Assert.AreEqual(res, 15);
 		}
 
+		[TestMethod]
+		public void NegativeNumbersFail()
+		{
+			try
+			{
+				Calculator.Add("1,2,-3,-4,-5,6");
+			}
+			catch (Exception ex)
+			{
+				Assert.IsNotNull(ex);
+				Assert.AreEqual(ex.Message, "Negative values not supported! Offending inputs: -3, -4, -5");
+			}
+		}
+
 	}
 }
