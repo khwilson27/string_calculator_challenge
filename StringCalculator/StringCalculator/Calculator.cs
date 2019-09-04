@@ -28,6 +28,10 @@ namespace StringCalculator
 				{
 					negativeNumbers.Add(valToAdd);
 				}
+				else if (valToAdd > 1000) // ignore any value greater than 1000
+				{
+					valToAdd = 0;
+				}
 
 				sum += valToAdd;
 			}

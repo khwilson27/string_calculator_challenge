@@ -75,5 +75,13 @@ namespace CalculatorTest
 			}
 		}
 
+		[TestMethod]
+		public void IgnoreValuesOverThousandPass()
+		{
+			var res = Calculator.Add("1,2,3,1000,1001");
+			Assert.IsNotNull(res);
+			Assert.AreEqual(res, 1006);
+		}
+
 	}
 }
