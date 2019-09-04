@@ -18,11 +18,6 @@ namespace StringCalculator
 			int sum = 0;
 			string[] arrSplitByComma = input.Split(',');
 
-			if (arrSplitByComma.Length > 2)
-			{
-				throw new Exception("Only supports a max of 2 values.");
-			}
-
 			foreach (var item in arrSplitByComma)
 			{
 				int valToAdd = 0;

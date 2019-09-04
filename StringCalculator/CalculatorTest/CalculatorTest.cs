@@ -22,25 +22,37 @@ namespace CalculatorTest
 		}
 
 		[TestMethod]
-		public void MaximumTwoValuesFail()
+		public void SingleValuePass()
 		{
-			try
-			{
-				Calculator.Add("1,2,3");
-			}
-			catch (Exception ex)
-			{
-				Assert.IsNotNull(ex);
-				Assert.AreEqual(ex.Message, "Only supports a max of 2 values.");
-			}
+			var res = Calculator.Add("1");
+			Assert.IsNotNull(res);
+			Assert.AreEqual(res, 1);
 		}
 
 		[TestMethod]
-		public void MaximumTwoValuesPass()
+		public void SingleValueNonNumberPass()
 		{
-			var res = Calculator.Add("1,2");
+			var res = Calculator.Add("shouldBeZero");
 			Assert.IsNotNull(res);
-			Assert.AreEqual(res, 3);
+			Assert.AreEqual(res, 0);
 		}
+
+		[TestMethod]
+		public void MultipleValuesPass()
+		{
+			var res = Calculator.Add("1,2,3,4,5");
+			Assert.IsNotNull(res);
+			Assert.AreEqual(res, 15);
+		}
+
+		[TestMethod]
+		public void MultipleValuesWithNonNumbersPass()
+		{
+			var res = Calculator.Add("1,2,3,4,5,shouldBeZero");
+			Assert.IsNotNull(res);
+			Assert.AreEqual(res, 15);
+		}
+
+
 	}
 }
